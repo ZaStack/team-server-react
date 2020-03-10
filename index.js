@@ -1,11 +1,8 @@
 const express = require('express');
 const server = express();
 
-const PORT = 5432;
+const PORT = 5000;
 server.use(express.json());
-server.listen(PORT, () => {
-    console.log(`\n server is listening on ${PORT} \n`);
-});
 
 
 let books = [
@@ -25,3 +22,11 @@ let books = [
         year: 1981
     }
 ];
+
+server.get('/api/books', (req, res) => {
+    res.status(200).json(books)
+});
+
+server.listen(PORT, () => {
+    console.log(`\n server is listening on ${PORT} \n`);
+});
